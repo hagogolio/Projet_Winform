@@ -42,7 +42,7 @@
             this.textBoxTel = new System.Windows.Forms.TextBox();
             this.textBoxWeb = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxNom = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.reset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -162,7 +162,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.comboBoxNom);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.reset);
             this.groupBox1.Controls.Add(this.textBoxTel);
@@ -186,13 +186,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ajout Club";
             // 
-            // comboBox1
+            // comboBoxNom
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(163, 37);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(190, 21);
-            this.comboBox1.TabIndex = 15;
+            this.comboBoxNom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxNom.FormattingEnabled = true;
+            this.comboBoxNom.Location = new System.Drawing.Point(163, 37);
+            this.comboBoxNom.Name = "comboBoxNom";
+            this.comboBoxNom.Size = new System.Drawing.Size(190, 21);
+            this.comboBoxNom.TabIndex = 15;
             // 
             // label7
             // 
@@ -249,7 +250,7 @@
         private System.Windows.Forms.TextBox textBoxWeb;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button reset;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxNom;
         private System.Windows.Forms.Label label7;
     }
 }

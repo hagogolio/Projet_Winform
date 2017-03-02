@@ -141,10 +141,10 @@ namespace Projet_Winform
         public Adherent Adh(int id)
         {
 
-           
+
             Adherent Adh = null;
-           
-           
+
+
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -178,9 +178,44 @@ namespace Projet_Winform
                     }
 
                 }
+                return Adh;
+            } }
 
+        public DataTable club(string nom)
+        {
+
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            DataTable t = null;
+            connection.Open();
+            /* MySqlDataAdapter test = new MySqlDataAdapter("Select * from adherent where id_club_adh=1 ",connection);
+             DataTable dt = new DataTable();
+             test.Fill(dt);
+             return dt;*/
+            if (nom == " ")
+            {
+                using (MySqlDataAdapter a = new MySqlDataAdapter("Select club.id_club as Id,nom_club as Nom ,nom_ligue as Ligue from club inner join ligue on ligue.id_club=ligue.id_club", connection))
+                {
+                    string filter = nom;
+                    t = new DataTable();
+
+                    a.Fill(t);
+
+                }
             }
+            else
+            {
+                using (MySqlDataAdapter a = new MySqlDataAdapter("Select club.id_club as Id,club.nom_club as Nom ,ligue.nom_ligue as Ligue from club inner join ligue on club.id_club=ligue.id_club where club.nom_club=@filter ", connection))
+                {
+                    string filter = nom;
+                    t = new DataTable();
+                    a.SelectCommand.Parameters.AddWithValue("@filter", filter);
+                    a.Fill(t);
 
+                }
+               
+            }
+            return t;
+        }
 
             /* using (MySqlDataAdapter a = new MySqlDataAdapter("Select adherent.id_adh as Licence,nom_adh as Nom ,prenom_adh as Prenom from adherent", connection))
              {
@@ -189,8 +224,8 @@ namespace Projet_Winform
 
                  a.Fill(t);
              }*/
-            return Adh;
-        }
+         
+        
         public List<Club> ReadAll()
         {
             Club laligue = null;

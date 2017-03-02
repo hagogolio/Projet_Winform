@@ -18,8 +18,14 @@ namespace Projet_Winform
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             DBConnectTest con = new DBConnectTest();
+           
             List<Club> club = con.ReadAll();
+            foreach (Club item in club)
+            {
 
+                comboBoxNom.Items.Add(item.getNom().ToString());
+
+            }
             // Set up the DataGridView.
 
 

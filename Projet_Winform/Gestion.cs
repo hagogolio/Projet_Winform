@@ -15,7 +15,7 @@ namespace Projet_Winform
         public Gestion()
         {
 
-            ToolStripMenuItem MnuStripItem;
+            
             InitializeComponent();
             this.IsMdiContainer = true;
 

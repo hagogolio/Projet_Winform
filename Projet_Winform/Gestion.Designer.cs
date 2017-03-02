@@ -165,6 +165,7 @@
             // 
             // toolStripComboBox1
             // 
+            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(152, 23);
             this.toolStripComboBox1.ToolTipText = "test";
@@ -184,8 +185,9 @@
             // 
             // toolStripComboBox2
             // 
+            this.toolStripComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBox2.Name = "toolStripComboBox2";
-            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox2.Size = new System.Drawing.Size(152, 23);
             // 
             // toolStripSeparator5
             // 
