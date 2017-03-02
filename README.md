@@ -1,2 +1,2 @@
 # Projet_Winform
-projet Scolaire Client lourd de gesion de ligue en C#
+projet Scolaire Client lourd de gestion de ligue en C#
