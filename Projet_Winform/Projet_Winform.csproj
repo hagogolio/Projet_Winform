@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{25B0C357-2408-491D-B7AB-9E71B96477AE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Projet_Winform</RootNamespace>
+    <AssemblyName>Projet_Winform</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\Ligue.cs" />
+    <Compile Include="Couche Graphique\Adh\AddAdh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Couche Graphique\Adh\AddAdh.Designer.cs">
+      <DependentUpon>AddAdh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Couche Graphique\Ligue\AddLigue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Couche Graphique\Ligue\AddLigue.Designer.cs">
+      <DependentUpon>AddLigue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class\Adherent.cs" />
+    <Compile Include="Couche Graphique\Club\AddClub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Couche Graphique\Club\AddClub.Designer.cs">
+      <DependentUpon>AddClub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAcces\DataAccesLigue.cs" />
+    <Compile Include="DataAcces\DBConnectTest.cs" />
+    <Compile Include="Class\Evenement.cs" />
+    <Compile Include="Couche Graphique\Adh\ModifAdhClub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Couche Graphique\Adh\ModifAdhClub.Designer.cs">
+      <DependentUpon>ModifAdhClub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion.Designer.cs">
+      <DependentUpon>Gestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionEvenement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionEvenement.Designer.cs">
+      <DependentUpon>GestionEvenement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class\Club.cs" />
+    <Compile Include="Couche Graphique\Club\ModifClub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Couche Graphique\Club\ModifClub.Designer.cs">
+      <DependentUpon>ModifClub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Couche Graphique\Adh\AddAdh.resx">
+      <DependentUpon>AddAdh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Couche Graphique\Ligue\AddLigue.resx">
+      <DependentUpon>AddLigue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Couche Graphique\Club\AddClub.resx">
+      <DependentUpon>AddClub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Couche Graphique\Adh\ModifAdhClub.resx">
+      <DependentUpon>ModifAdhClub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion.resx">
+      <DependentUpon>Gestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion.zu.resx">
+      <DependentUpon>Gestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Couche Graphique\Club\ModifClub.resx">
+      <DependentUpon>ModifClub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\518071-background-hd_xO1TwRc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue-fantasy-background-psdgraphics-24fESD-clipart.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\518079-background-hd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background-pictures-10.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
