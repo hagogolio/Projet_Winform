@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projet_Winform.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,11 +20,11 @@ namespace Projet_Winform
             this.WindowState = FormWindowState.Maximized;
             DBConnectTest con = new DBConnectTest();
            
-            List<Club> club = con.ReadAll();
-            foreach (Club item in club)
+            List<Ligue> ligue = con.ReadLigue();
+            foreach (Ligue item in ligue)
             {
 
-                comboBoxNom.Items.Add(item.getNom().ToString());
+                comboBoxNom.Items.Add(item.getnom().ToString());
 
             }
             // Set up the DataGridView.
@@ -39,6 +40,7 @@ namespace Projet_Winform
                 MessageBox.Show("Veuillez remplir tous les champs");
             else
             {
+                string nom_ligue = comboBoxNom.SelectedValue.ToString();
                 string nom = textBoxNom.Text;
                 string ville = textBoxVille.Text;
                 string adr = textBoxAd.Text;
@@ -46,7 +48,7 @@ namespace Projet_Winform
                 string tel = textBoxTel.Text;
                 string web = textBoxWeb.Text;
                 DBConnectTest nveau = new DBConnectTest();
-                nveau.InsertLigue(nom, adr, cp, ville, tel, web);
+                nveau.InsertLigue(nom, adr, cp, ville, tel, web,nom);
                 Close();
             }
         }

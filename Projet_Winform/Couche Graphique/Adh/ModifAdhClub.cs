@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Projet_Winform
@@ -44,7 +38,7 @@ namespace Projet_Winform
             textMail.Enabled = false;
             textId.Enabled = false;
             button1.Hide();
-
+            textBox1.Text = nom;
 
         }
 
@@ -73,8 +67,8 @@ namespace Projet_Winform
                 button1.Hide();
                 buttonModif.Show();
                 int idtest = Int32.Parse(id2);
-                DBConnectTest con = new DBConnectTest();
-                Adherent lAdherent = con.Adh(idtest);
+                DBConnectTest connec = new DBConnectTest();
+                Adherent lAdherent = connec.Adh(idtest);
                 textNom.Text = lAdherent.getNom();
                 textPrenom.Text = lAdherent.getprenom();
                 textAdr.Text = lAdherent.getadr();

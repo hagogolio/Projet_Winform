@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projet_Winform.Class
 {
-    class Ligue
+   public class Ligue
     {
         private string nom;
         private int idclub;
@@ -17,6 +17,10 @@ namespace Projet_Winform.Class
             this.nom = nom;
             this.idclub = idclub;
             this.idligue = idligue;
+        }
+        public Ligue()
+        {
+
         }
         public string getnom()
         {

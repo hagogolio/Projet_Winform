@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projet_Winform.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,12 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Projet_Winform
 {
     public partial class ModifClub : Form
     {
         public ModifClub()
         {
+           
 
             InitializeComponent();
             groupBox1.Hide();
@@ -29,11 +32,11 @@ namespace Projet_Winform
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // Automatically generate the DataGridView columns.
             dataGridView1.AutoGenerateColumns = true;
-            List<Club> club = nveau.ReadAll();
-            foreach (Club item in club)
+            List<Ligue> ligue = nveau.ReadLigue();
+            foreach (Ligue item in ligue)
             {
 
-                toolStripComboBox1.Items.Add(item.getNom().ToString());
+                toolStripComboBox1.Items.Add(item.getnom().ToString());
 
             }
             /* dataGridView1.DataSource = Four;

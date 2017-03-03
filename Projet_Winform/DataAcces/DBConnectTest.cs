@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Projet_Winform;
+using Projet_Winform.Class;
 
 namespace Projet_Winform
 {
@@ -37,15 +38,7 @@ namespace Projet_Winform
 
         }
 
-        internal Club insert(string nom, string adr, int cp, string ville, string tel, string web)
-        {
-            throw new NotImplementedException();
-        }
 
-        internal Adherent insert(string prenom, string nom, int tarif)
-        {
-            throw new NotImplementedException();
-        }
 
 
 
@@ -96,7 +89,7 @@ namespace Projet_Winform
 
 
         }
-      
+
         public DataTable data(string nom)
         {
 
@@ -129,13 +122,13 @@ namespace Projet_Winform
 
                 }
             }
-          /*  using (MySqlDataAdapter a = new MySqlDataAdapter("Select adherent.id_adh as Licence,nom_adh as Nom ,prenom_adh as Prenom from adherent", connection))
-            {
-            
-             t = new DataTable();
-         
-                a.Fill(t);
-            }*/
+            /*  using (MySqlDataAdapter a = new MySqlDataAdapter("Select adherent.id_adh as Licence,nom_adh as Nom ,prenom_adh as Prenom from adherent", connection))
+              {
+
+               t = new DataTable();
+
+                  a.Fill(t);
+              }*/
             return t;
         }
         public Adherent Adh(int id)
@@ -179,7 +172,8 @@ namespace Projet_Winform
 
                 }
                 return Adh;
-            } }
+            }
+        }
 
         public DataTable club(string nom)
         {
@@ -204,7 +198,7 @@ namespace Projet_Winform
             }
             else
             {
-                using (MySqlDataAdapter a = new MySqlDataAdapter("Select club.id_club as Id,club.nom_club as Nom ,ligue.nom_ligue as Ligue from club inner join ligue on club.id_club=ligue.id_club where club.nom_club=@filter ", connection))
+                using (MySqlDataAdapter a = new MySqlDataAdapter("Select club.id_club as Id,club.nom_club as Nom ,ligue.nom_ligue as Ligue from club inner join ligue on club.id_club=ligue.id_club where ligue.nom_ligue=@filter", connection))
                 {
                     string filter = nom;
                     t = new DataTable();
@@ -212,20 +206,20 @@ namespace Projet_Winform
                     a.Fill(t);
 
                 }
-               
+
             }
             return t;
         }
 
-            /* using (MySqlDataAdapter a = new MySqlDataAdapter("Select adherent.id_adh as Licence,nom_adh as Nom ,prenom_adh as Prenom from adherent", connection))
-             {
+        /* using (MySqlDataAdapter a = new MySqlDataAdapter("Select adherent.id_adh as Licence,nom_adh as Nom ,prenom_adh as Prenom from adherent", connection))
+         {
 
-                 t = new DataTable();
+             t = new DataTable();
 
-                 a.Fill(t);
-             }*/
-         
-        
+             a.Fill(t);
+         }*/
+
+
         public List<Club> ReadAll()
         {
             Club laligue = null;
@@ -266,6 +260,42 @@ namespace Projet_Winform
 
 
         }
+
+        public List<Ligue> ReadLigue()
+        {
+            Ligue laligue = null;
+            List<Ligue> List = new List<Ligue>();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM ligue";
+
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+
+                //Create a data reader and Execute the command
+
+                using (MySqlDataReader dataReader = cmd.ExecuteReader())
+                {
+
+                    //Read the data and store them in the list
+                    while (dataReader.Read())
+                    {
+                        laligue = new Ligue();
+                        laligue.setnom((string)dataReader["nom_ligue"]);
+                        List.Add(laligue);
+                    }
+
+
+                }
+
+            }
+            return List;
+
+
+        }
         public void ModifLigue(string nom, string adresse, int cp, string ville, string tel, string web, int id)
         {
 
@@ -276,7 +306,6 @@ namespace Projet_Winform
                 connection.Open();
                 string sql = "Update club set nom_club=@nom,adresse_club=@adresse,cp_club=@cp,ville_club=@ville,tel_club=@tel,site_club=@web where id_club=@id";
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
-
                 cmd.Parameters.AddWithValue("@nom", nom);
                 cmd.Parameters.AddWithValue("@adresse", adresse);
                 cmd.Parameters.AddWithValue("@cp", cp);
@@ -287,8 +316,9 @@ namespace Projet_Winform
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
             }
+
         }
-        public void ModifAdh(string nom,string prenom, string adresse, int cp, string ville, string tel, string mail, int id)
+        public void ModifAdh(string nom, string prenom, string adresse, int cp, string ville, string tel, string mail, int id)
         {
 
 
@@ -298,7 +328,7 @@ namespace Projet_Winform
                 connection.Open();
                 string sql = "Update adherent set nom_adh=@nom,prenom_adh=@prenom,adresse_adh=@adresse,cp_adh=@cp,ville_adh=@ville,tel_adh=@tel,mail_adh=@web where id_adh=@id";
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
-               
+
                 cmd.Parameters.AddWithValue("@nom", nom);
                 cmd.Parameters.AddWithValue("@prenom", prenom);
                 cmd.Parameters.AddWithValue("@adresse", adresse);
@@ -311,7 +341,7 @@ namespace Projet_Winform
                 cmd.ExecuteNonQuery();
             }
         }
-        public void InsertLigue( string nom, string adresse, int cp, string ville, string tel, string web)
+        public void InsertLigue(string nom, string adresse, int cp, string ville, string tel, string web, string nom_ligue)
         {
 
 
@@ -331,7 +361,64 @@ namespace Projet_Winform
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
             }
+
+            using (MySqlDataReader dataReader = cmd.ExecuteReader())
+            {
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    connection.Open();
+                    string id_club = "select last_insert_id()";
+                    laligue.setnom((string)dataReader["nom_ligue"]);
+                    List.Add(laligue);
+                }
+
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string id_club = "select last_insert_id()";
+                    string id_ligue = "Select id_ligue from ligue where nom_ligue=@nom";
+                    string sql = "INSERT INTO lien_ligue_club(id_ligue,id_club) VALUES(@id_ligue,@id_club)";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+
+                    cmd.Parameters.AddWithValue("@id_club", id_club);
+                    cmd.Parameters.AddWithValue("@nom", id_ligue);
+                    cmd.Parameters.AddWithValue("@cp", cp);
+                    cmd.Parameters.AddWithValue("@ville", ville);
+                    cmd.Parameters.AddWithValue("@tel", tel);
+                    cmd.Parameters.AddWithValue("@web", web);
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
         }
-       
+              public int id_club()
+        {
+            int laligue = null;
+            List<Ligue> List = new List<Ligue>();
+            string requete1 = "select distinct(Num) from table where Num <>'0' ";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                using (MySqlCommand oCommand = new MySqlCommand(requete1, connection))
+                {
+                    int h = 0;
+                    using (MySqlDataReader reader1 = oCommand.ExecuteReader())
+                    {
+                        while (reader1.Read())
+                        {
+                            if (h == 3) return reader1.GetString(0);
+                            h++;
+                        }
+                        throw new Exception("élément inexistant !!!"); // pour débuguer 
+                                                                       //return string.Empty; // ou null comme tu veux 
+                    }
+                }
+            }
+        } 
+            return List;
+        }
     }
 }
